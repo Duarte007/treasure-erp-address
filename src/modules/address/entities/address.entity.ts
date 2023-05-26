@@ -31,3 +31,15 @@ export class Address extends BaseEntity {
   @Column({ nullable: false })
   country: string;
 }
+
+export interface AddressRecord {
+  address_id?: number;
+  address_uuid: string;
+  street: string;
+  complement: string;
+  neighborhood: string;
+  city: string;
+  state: string;
+  postal_code: string;
+  country: string;
+}

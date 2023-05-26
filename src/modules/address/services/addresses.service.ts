@@ -1,4 +1,5 @@
 import { Injectable } from '@nestjs/common';
+import { AddressAdapter } from '../adapters/address.adapter';
 import { CreateAddressDTO } from '../dto/create-address.dto';
 import { UpdateAddressDto } from '../dto/update-address.dto';
 import { AddressesRepository } from '../repositories/addresses.repository';
@@ -8,7 +9,8 @@ export class AddressService {
   constructor(private addressesRepository: AddressesRepository) {}
 
   create(createAddressDto: CreateAddressDTO) {
-    return this.addressesRepository.createAddress(createAddressDto);
+    const addressToSave = AddressAdapter.toDatabase(createAddressDto);
+    return this.addressesRepository.createAddress(addressToSave);
   }
 
   findAll() {
