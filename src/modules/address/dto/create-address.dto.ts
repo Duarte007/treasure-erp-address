@@ -1,7 +1,11 @@
 import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
-import { IsDefined, IsOptional, IsString } from 'class-validator';
+import { IsDefined, IsOptional, IsString, IsUUID } from 'class-validator';
 
 export class CreateAddressDTO {
+  @ApiProperty()
+  @IsUUID()
+  @IsDefined()
+  uuid: string;
   @ApiProperty()
   @IsString()
   @IsDefined()
