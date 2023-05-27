@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, Logger } from '@nestjs/common';
 import { AddressAdapter } from '../adapters/address.adapter';
 import { CreateAddressDTO } from '../dto/create-address.dto';
 import { UpdateAddressDto } from '../dto/update-address.dto';
@@ -10,6 +10,7 @@ export class AddressService {
 
   create(createAddressDto: CreateAddressDTO) {
     const addressToSave = AddressAdapter.toDatabase(createAddressDto);
+    Logger.log({ message: 'New Address', createAddressDto, addressToSave });
     return this.addressesRepository.createAddress(addressToSave);
   }
 
