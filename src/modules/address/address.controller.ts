@@ -28,7 +28,7 @@ export class AddressController {
 
   @Post('event')
   @PubSub()
-  createByEvent(
+  createFromEvent(
     @Body() addressEvent: PubsubPostBody,
     @Query() params: TokenAuthQueryParam,
   ) {
